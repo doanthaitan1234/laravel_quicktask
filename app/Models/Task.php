@@ -27,4 +27,9 @@ class Task extends Model
         'start_time' => 'date:Y-m-d',
         'end_time' => 'date:Y-m-d',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
