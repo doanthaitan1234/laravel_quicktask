@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support
+use Illuminate\Support;
 
 class CheckAdmin
 {

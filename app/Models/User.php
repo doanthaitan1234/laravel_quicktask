@@ -54,12 +54,12 @@ class User extends Authenticatable
      *
      * @return void
      */
-     protected static function booted()
-     {
-         static::addGlobalScope('ancient', function (Builder $builder) {
-             $builder->where('isActive', 1);
-         });
-     }
+    //  protected static function booted()
+    //  {
+    //      static::addGlobalScope('ancient', function (Builder $builder) {
+    //          $builder->where('isActive', 1);
+    //      });
+    //  }
 
     public function tasks()
     {
