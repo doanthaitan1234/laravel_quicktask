@@ -17,8 +17,9 @@ use App\Http\Controllers\TaskController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::resource('users', TaskController::class);
+Route::middleware(['CheckAdmin'])->group(function () {
+    Route::resource('users', UserController::class);
+});
 
 Route::prefix('tasks')->controller(TaskController::class)->name('tasks.')->group(function () {
     Route::get('/', 'index')->name('index');
