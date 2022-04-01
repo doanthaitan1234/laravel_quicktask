@@ -30,3 +30,7 @@ Route::prefix('tasks')->controller(TaskController::class)->name('tasks.')->group
     Route::put('/{id}', 'update')->name('update');
     Route::delete('/{id}', 'destroy')->name('destroy');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
