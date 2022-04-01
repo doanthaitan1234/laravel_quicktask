@@ -1,0 +1,21 @@
+{
+  "name": "laravel_quicktask",
+  "description": "",
+  "main": "",
+  "authors": [
+    "doanthaitan1807 <doanthaitan123@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/doanthaitan1234/laravel_quicktask",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "light-dasboard-template": "https://github.com/doanthaitan1234/light-dasboard-template.git"
+  }
+}
