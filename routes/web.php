@@ -17,15 +17,17 @@ use App\Http\Controllers\LangController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::middleware(['checkAdmin'])->group(function () {
     Route::resource('users', UserController::class);
+    Route::get('/', function () {
+        return view('home');
+    });
 });
 
-Route::prefix('tasks')->controller(TaskController::class)->name('tasks.')->group(function () {
+Route::prefix('tasks')->middleware(['checkAdmin'])->controller(TaskController::class)->name('tasks.')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/{user_id}', 'getTaskByUserId')->name('get_tasks_by_user_id');
     Route::get('/create', 'index')->name('create');
     Route::get('/{id}', 'show')->name('show');
     Route::get('/{id}/edit', 'edit')->name('edit');

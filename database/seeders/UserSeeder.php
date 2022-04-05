@@ -24,11 +24,11 @@ class UserSeeder extends Seeder
         User::create([
             'first_name' => 'Thai',
             'last_name' => 'Tan',
-            'username' => 'Doan Thai Tan',
+            'username' => 'thaitan1807',
             'isAdmin' => 1,
             'isActive' => 1,
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('123456'),
+            'password' => Hash::make('12345678'),
         ]);
     }
 }

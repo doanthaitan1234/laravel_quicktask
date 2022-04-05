@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Auth;
 
 class UserController extends Controller
 {
+    const PAGINATION_NUMBER = 5;
+    protected $userModel;
+
+    public function __construct(User $userModel)
+    {
+        $this->middleware('auth');
+        $this->userModel = $userModel;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $userLogged = Auth::user()->id;
+        $users = $this->userModel::where('id' , '<>', $userLogged)->orderBy('id', 'desc')->get();
+        // dd($users);
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -23,7 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.index');
     }
 
     /**
@@ -56,7 +69,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('users.index');
     }
 
     /**
@@ -79,6 +92,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return view('users.index');
     }
 }
