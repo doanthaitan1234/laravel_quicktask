@@ -19,7 +19,7 @@ class TaskFactory extends Factory
             'description' => $this->faker->sentence(),
             'start_time' => $this->faker->dateTime(),
             'end_time' => $this->faker->dateTime(),
-            'status' => rand(0,1),
+            'status' => rand(0,2),
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support;
+use Auth;
 
 class CheckAdmin
 {
@@ -21,6 +22,6 @@ class CheckAdmin
             return $next($request);
         }
         
-        return $next($request);
+        return redirect('/home');
     }
 }

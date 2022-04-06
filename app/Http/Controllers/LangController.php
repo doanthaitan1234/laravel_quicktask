@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Contracts\Session\Session;
+use Session;
 
 class LangController extends Controller
 {
