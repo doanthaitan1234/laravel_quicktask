@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
+use App\Defines\Define;
 
 class User extends Authenticatable
 {
@@ -25,7 +26,7 @@ class User extends Authenticatable
         'password',
         'isAdmin',
         'isActive',
-        'username'
+        'user_name'
     ];
 
     /**
@@ -70,9 +71,9 @@ class User extends Authenticatable
     {
         return $this->first_name . " " . $this->last_name;
     }
-    public function setUserNameAttribute()
+    public function setuser_nameAttribute()
     {
-        $this->attributes['username'] =  Str::slug($this->username);
+        $this->attributes['user_name'] =  Str::slug($this->user_name);
     }
     /**
      * Create local scope
@@ -81,5 +82,15 @@ class User extends Authenticatable
     public function scopeAdmin($query)
     {
         return $query->where('isAdmin', 1);
+    }
+
+    public static function rules($rule = 0)
+    {
+        return [
+            'first_name' => 'required|max:100',
+            'last_name' => 'required|max:100',
+            'email' => 'required|email|max:200',
+            'password' => ($rule != 0 ? 'required|confirmed|min:8|max:20': ''),
+        ];
     }
 }

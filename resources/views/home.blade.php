@@ -7,7 +7,7 @@
                 <div class="card-body">
                     @if (Auth::user())
                         <h1 class="alert alert-success" role="alert">
-                            {{ __('Welcome!') }} {{  Auth::user()->full_name }}
+                            {{ __('Welcome :name!', ['name' => Auth::user()->full_name]) }}
                         </h1>
                     @else
                         {{ __('You must login!') }}

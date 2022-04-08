@@ -15,7 +15,7 @@ class TaskFactory extends Factory
     {
         return [
             'user_id' => rand(1,11),
-            'title' => $this->faker->sentence(),
+            'title' => $this->faker->unique()->sentence(),
             'description' => $this->faker->sentence(),
             'start_time' => $this->faker->dateTime(),
             'end_time' => $this->faker->dateTime(),

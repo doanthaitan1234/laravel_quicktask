@@ -23,21 +23,20 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::get('/', function () {
         return view('home');
     });
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 
 Route::prefix('tasks')->middleware(['checkAdmin'])->controller(TaskController::class)->name('tasks.')->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/{user_id}', 'getTaskByUserId')->name('get_tasks_by_user_id');
-    Route::get('/create', 'index')->name('create');
+    Route::get('/{user_id}', 'getTasksByUserId')->name('get_tasks_by_user_id');
+    Route::get('/{user_id}/create', 'create')->name('create');
     Route::get('/{id}', 'show')->name('show');
-    Route::get('/{id}/edit', 'edit')->name('edit');
+    Route::get('/edit/{id}', 'edit')->name('edit');
     Route::post('/', 'store')->name('store');
     Route::put('/{id}', 'update')->name('update');
     Route::delete('/{id}', 'destroy')->name('destroy');
 });
 
 Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('lang/{language}', [LangController::class, 'changeLanguage'])->name('lang');
