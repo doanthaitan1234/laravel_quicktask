@@ -32,4 +32,17 @@ class Task extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public static function rules()
+    {
+        return [
+            'title' => 'required|unique:tasks|max:255',
+            'description' => 'required|max:255',
+        ];
+    }
 }

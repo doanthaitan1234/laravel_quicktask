@@ -24,6 +24,8 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <link href="{{ asset('bower_components/light-dasboard-template/assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
 </head>
 <body>
@@ -50,7 +52,7 @@
                     </li>
                     <li class="menu" id="task">
 
-                        <a href="{{ Auth::user() ? route('tasks.get_tasks_by_user_id', Auth::user()->id) : route('login') }}">
+                        <a href="{{ route('tasks.index') }}">
                             <i class="pe-7s-note2"></i>
                             <p>{{ __('Task') }}</p>
                         </a>
@@ -82,10 +84,10 @@
                                     <li><a class="" href="{{ route('lang', ['vi'])  }}">{{ __('VI') }}</a></li>
                                 </ul>
                             @else
-                                <li>
-                                    <a href=""><p>{{ Auth::user()->username }}</p></a>
+                                <li class="mt-3">
+                                    <a href="{{ route('users.edit', Auth::user()->id) }}"><p>{{ Auth::user()->full_name }}</p></a>
                                 </li>
-                                <li class="dropdown">
+                                <li class="dropdown mt-3">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <p>{{ __('Language') }} <b class="caret"></b></p>
                                     </a>
@@ -109,9 +111,26 @@
             </nav>
             <div class="content">
                 <div class="container-fluid">
+                    @if (Session::has('message'))
+                    <div class="box box-default notify">
+                        <input type="hidden" class="message" value="{{  Session::get('message')  }}">
+                    </div>
+                    @endif
                     @yield('content')
                 </div>
             </div>
+            <div class="modal fade" tabindexrole="dialog" id="delete-modal">  
+                <div class="modal-dialog modal-sm" role="document">  
+                    <div class="modal-content">  
+                        <!-- modal-header -->  
+                        <div class="modal-header" id="modal-head"></div>  
+                        <!-- modal-body -->  
+                        <div class="modal-body" id="modal-body"></div>  
+                        <!-- modal-footer -->  
+                        <div class="modal-footer" id="modal-footer"></div>  
+                    </div>  
+                </div>  
+            </div>  
             <footer class="footer">
                 <div class="container-fluid">
                 </div>
@@ -138,22 +157,8 @@
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="{{ asset('bower_components/light-dasboard-template/assets/js/demo.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-            if ($('.row').hasClass('home')) {
-                $('.menu').removeClass('active')
-                $('#home').addClass('active')
-            }
-            if ($('.row').hasClass('user')) {
-                $('.menu').removeClass('active')
-                $('#user').addClass('active')
-            }
-            if ($('.row').hasClass('task')) {
-                $('.menu').removeClass('active')
-                $('#task').addClass('active')
-            }
-        });
-        </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 
 </html>

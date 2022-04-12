@@ -8,11 +8,56 @@
 .btn-action-custom {
     margin-right: 8px;
 }
-.text-oneline
-{
+.text-oneline {
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
 }
+.btn-submit {
+    transition: 0.3s ease;
+    width: 80px;
+}
+.btn-submit:hover {
+    color: #ffffff;
+    background-color: #3472F7;
+}
+.btn-delete:hover {
+    cursor: pointer;
+}
+.mt-1 {
+    margin-top: 15px;
+}
+.btn-cancel {
+    width: 80px;
+}
+.btn-cancel:hover {
+    color: #ffffff;
+    background-color: #888888;
+}
+.me-1 {
+    margin-right: 0.5rem;
+}
+.ms-2 {
+    margin-left: 1.5rem;
+}
+.mt-3 {
+    margin-top: 0.3rem;
+}
+.w-15 {
+    width: 15%;
+}
+.ps-6 {
+    padding-left: 6rem !important;
+}
+.d-flex {
+    display: flex;
+}
+.bg-none {
+    background: none !important;
+}
+.justify-content-around {
+    justify-content: space-around !important;
+}
+/* .border-none */
